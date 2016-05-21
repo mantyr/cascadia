@@ -35,6 +35,30 @@ var selectorTests = []selectorTest{
 		},
 	},
 	{
+		`<html><head></head><body></body><ul><li id="t1">1</li><li id="t2">2</li><li id="t3">3</li><li id="t4">4</li></ul></html>`,
+		"ul li:nth-of-type(3)",
+		[]string{
+			`<li id="t3">`,
+		},
+	},
+	{
+		`<html><head></head><body></body><ul><li id="t1">1</li><li id="t2">2</li><li id="t3">3</li><li id="t4">4</li></ul></html>`,
+		"ul li:get(3)",  // synonym :nth-of-type(3)
+		[]string{
+			`<li id="t3">`,
+		},
+	},
+	{
+		`<html><head></head><body></body><ul><li id="t1">1</li><li id="t2">2</li><li id="t3">3</li><li id="t4">4</li></ul></html>`,
+		"ul li:get(n)",  // synonym :nth-of-type(n)
+		[]string{
+			`<li id="t1">`,
+			`<li id="t2">`,
+			`<li id="t3">`,
+			`<li id="t4">`,
+		},
+	},
+	{
 		`<html><head></head><body></body></html>`,
 		"*",
 		[]string{

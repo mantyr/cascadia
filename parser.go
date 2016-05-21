@@ -431,6 +431,10 @@ func (p *parser) parsePseudoclassSelector() (Selector, error) {
 		return nil, err
 	}
 	name = toLowerASCII(name)
+	
+	if name == "get" {
+		name = "nth-of-type"
+	}
 
 	switch name {
 	case "not", "has", "haschild":
